@@ -1,13 +1,20 @@
 import "./App.css";
-
+import { useState } from "react";
 function App() {
+  const [currentDisplay,setCurrentDisplay] = useState([])
+
+  const numbers = (e) => {
+    let value = e.target.innerText;
+    setCurrentDisplay(currentDisplay + value)
+    
+  }
   return (
     <div className="App">
       <div className="calculatorContainer">
         <div className="displayContainer">
           <div className="displayTop"></div>
           <div className="displayBottom">
-            <span className="prevNumbers">0</span>
+            <span  className="prevNumbers">{currentDisplay}</span>
             <span className="currentNumbers">0</span>
           </div>
         </div>
@@ -20,20 +27,20 @@ function App() {
           <button>x2</button>
           <button>logx</button>
           <button>÷</button>
-          <button>7</button>
-          <button>8</button>
-          <button>9</button>
+          <button onClick={numbers}>7</button>
+          <button onClick={numbers}>8</button>
+          <button onClick={numbers}>9</button>
           <button>*</button>
-          <button>4</button>
-          <button>5</button>
-          <button>6</button>
+          <button onClick={numbers}>4</button>
+          <button onClick={numbers}>5</button>
+          <button onClick={numbers}>6</button>
           <button>-</button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
-          <button>+</button>
-          <button>+/-</button>
-          <button>0</button>
+          <button onClick={numbers}>1</button>
+          <button onClick={numbers}>2</button>
+          <button onClick={numbers}>3</button>
+          <button >+</button>
+          <button >+/-</button>
+          <button onClick={numbers}>0</button>
           <button>.</button>
           <button>=</button>
         </div>
