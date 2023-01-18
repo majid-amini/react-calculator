@@ -9,6 +9,9 @@
   background-color: #2d2d2d;
   border-radius: 2rem;
 }
+.displayContainer {
+  max-height: 15rem;
+}
 .displayBottom {
   width: 100%;
   display: flex;
@@ -16,7 +19,7 @@
   color: snow;
 }
 .displayBottom .prevNumbers {
-  font-size: 5rem;
+  font-size: 4rem;
   text-align: right;
   padding: 1rem;
   word-wrap: break-word;
@@ -38,7 +41,11 @@
   cursor: pointer;
   transition: all 0.3s linear;
   font-weight: bold;
+  border-radius: 0.5rem;
 }
 .operatorContainer button:hover {
   opacity: 0.75;
+}
+.equal {
+  background-color: rgb(228, 39, 39);
 }
