@@ -4,19 +4,23 @@ function App() {
   const [currentDisplay, setCurrentDisplay] = useState("");
   const [prevDisplay, setPrevDisplay] = useState("");
 
-  const symbols = ['+','-','÷','*']
+  const symbols = ["+", "-", "÷", "*"];
+
   const numbers = (e) => {
     let value = e.target.innerText;
-   
-    setPrevDisplay(prevDisplay + value);
+
+    if (!symbols.includes(prevDisplay.at(-1)) || !symbols.includes(value)) {
+      setPrevDisplay(prevDisplay + value);
+    }
   };
-  const deleteHandler = (e) => {
-    let newNumbers = currentDisplay.slice(0, -1);
-    setCurrentDisplay(newNumbers);
+
+  const deleteHandler = () => {
+    let newNumbers = prevDisplay.slice(0, -1);
+    setPrevDisplay(newNumbers);
   };
 
   const calculate = () => {
-    setCurrentDisplay(eval(prevDisplay))
+    setCurrentDisplay(eval(prevDisplay));
   };
   // const executeHandler = () => {};
   const clearHandler = () => {
@@ -29,8 +33,8 @@ function App() {
         <div className="displayContainer">
           <div className="displayTop"></div>
           <div className="displayBottom">
-            <span className="currentNumbers">{prevDisplay}</span>
-            <span className="prevNumbers">{currentDisplay}</span>
+            <span className="prevNumbers">{prevDisplay}</span>
+            <span className="currentNumbers">{currentDisplay}</span>
           </div>
         </div>
         <div className="operatorContainer">
