@@ -9,6 +9,9 @@ function App() {
   const numbers = (e) => {
     let value = e.target.innerText;
 
+    if (value == "." && prevDisplay.includes(".")) {
+      return null;
+    }
     if (!symbols.includes(prevDisplay.at(-1)) || !symbols.includes(value)) {
       setPrevDisplay(prevDisplay + value);
     }
@@ -20,7 +23,9 @@ function App() {
   };
 
   const calculate = () => {
-    setCurrentDisplay(eval(prevDisplay));
+    if (!symbols.includes(prevDisplay.charAt(prevDisplay.length - 1))) {
+      setCurrentDisplay(eval(prevDisplay));
+    }
   };
   // const executeHandler = () => {};
   const clearHandler = () => {
@@ -60,7 +65,7 @@ function App() {
           <button onClick={numbers}>+</button>
           <button>+/-</button>
           <button onClick={numbers}>0</button>
-          <button>.</button>
+          <button onClick={numbers}>.</button>
           <button onClick={calculate} className="equal">
             =
           </button>
